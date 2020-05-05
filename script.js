@@ -16,20 +16,33 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                         <p>Wind Speed: ${weather.wind.speed} MPH</p>
                         <p>UV Index: <span class = "uv" >${uvIndex.value}</span></p>
                      `
-                    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&exclude={part}&appid=775ad81aec4e8e43e36233ea18090329`)
-                        .then(r => r.json())
-                        .then(forecast => {
-                            console.log(forecast)
+                     localStorage.setItem('searchBar', document.getElementById('cityName'))
+                     if (localStorage.getItem('searchBar')) {
+                        // let savedSearch = JSON.parse(localStorage.getItem('searchBar'))
+                        document.getElementById('searchBar').innerHTML = `
+                        <button class="btn btn-block btn-secondary">${'cityName'.value}</button>
+                        `
+                        document.getElementById('searchBar').append(savedSearch)
+                    }
+                    // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=imperial&appid=775ad81aec4e8e43e36233ea18090329`)
+                    //     .then(r => r.json())
+                    //     .then(forecast => {
+                    //         console.log(forecast.daily[0])
+                    //         let forecastArr = forecast.daily
+                    //         for (let i = 0; i <= forecastArr; i++)
+                    //         console.log(forecastArr)
                 })
                 .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
         })
-    })
+    // .catch(e => console.log(e))
+   
 
-// fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&exclude={part}&appid=775ad81aec4e8e43e36233ea18090329`)
-//     .then (r => r.json())
-//     .then (forecast => {
-//         console.log(forecast)
-//     })
+// if (localStorage.getItem('searchBar')) {
+//     let savedSearch = JSON.parse(localStorage.getItem('searchBar'))
+//     document.getElementById('searchBar').innerHTML = `
+//     <button type="button" class="btn btn-light">${weather.name}</button>
+//     `
+// }
     

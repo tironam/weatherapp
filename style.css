@@ -1,5 +1,12 @@
-.container {
+.navbar {
+    width: 100%;
+}
+
+.container-fluid {
+    margin-top: 15px;
     margin-left: 10px;
+    background-color: lightgray;
+    padding-bottom: 15px;
 }
 
 .searchBar {

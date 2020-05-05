@@ -1,4 +1,7 @@
-.navbar-brand p {
-    text-align: center;
-    color: white;
+.container {
+    margin-left: 10px;
+}
+
+.searchBar {
+    margin: 15px 0px 15px 0px;
 }

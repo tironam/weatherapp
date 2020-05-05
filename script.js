@@ -5,7 +5,7 @@ document.getElementById('searchBtn').addEventListener('click', event => {
        .then( r => r.json())
         .then(weather => {
             console.log(weather)
-            fetch(`http://api.openweathermap.org/data/2.5/uvi?appid=775ad81aec4e8e43e36233ea18090329&lat=${weather.coord.lat}&lon=${weather.coord.lon}`)
+            fetch(`https://api.openweathermap.org/data/2.5/uvi?appid=775ad81aec4e8e43e36233ea18090329&lat=${weather.coord.lat}&lon=${weather.coord.lon}`)
                 .then(r => r.json())
                 .then(uvIndex => {
                     console.log(uvIndex)

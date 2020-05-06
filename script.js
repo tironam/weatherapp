@@ -10,7 +10,7 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                 .then(uvIndex => {
                     console.log(uvIndex)
                     let currentWeather = document.getElementById('cityToday').innerHTML = `
-                        <h2 class = "cityName">${weather.name} <span>${moment().format('MMMM Do, YYYY')}</span></h2>
+                        <h2 class = "cityName">${weather.name} <span>${moment().format('MMMM Do, YYYY')}</span><span> <img src=https://openweathermap.org/img/w/${weather.weather[0].icon}.png></span></h2>
                         <p class = "align-left">Temperature: ${Math.floor(weather.main.temp)}°F<p>
                         <p>Humidity: ${weather.main.humidity}%</p>
                         <p>Wind Speed: ${weather.wind.speed} MPH</p>

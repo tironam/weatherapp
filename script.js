@@ -1,33 +1,37 @@
-
 document.getElementById('searchBtn').addEventListener('click', event => {
     event.preventDefault()
+    // This api grabs the current weather
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${document.getElementById('cityName').value}&units=imperial&appid=775ad81aec4e8e43e36233ea18090329`)
        .then( r => r.json())
         .then(weather => {
             console.log(weather)
+            // this api grabs the five day forecast
             fetch(`https://api.openweathermap.org/data/2.5/uvi?appid=775ad81aec4e8e43e36233ea18090329&lat=${weather.coord.lat}&lon=${weather.coord.lon}`)
                 .then(r => r.json())
                 .then(uvIndex => {
                     console.log(uvIndex)
+                    // Code to retrieve the current weather
                     let currentWeather = document.getElementById('cityToday').innerHTML = `
-                        <h2 class = "cityName">${weather.name} <span>${moment().format('MMMM Do, YYYY')}</span><span> <img src=https://openweathermap.org/img/w/${weather.weather[0].icon}.png></span></h2>
+                        <h2 class = "cityName">${weather.name} <span>(${moment().format('MMMM Do, YYYY')})</span><span> <img src=https://openweathermap.org/img/w/${weather.weather[0].icon}.png></span></h2>
                         <p class = "align-left">Temperature: ${Math.floor(weather.main.temp)}°F<p>
                         <p>Humidity: ${weather.main.humidity}%</p>
                         <p>Wind Speed: ${weather.wind.speed} MPH</p>
                         <p>UV Index: <span class = "uv" >${uvIndex.value}</span></p>
                      `
-                    // localStorage.setItem('cityName', document.getElementById('cityName').value)
+                    // Creates a button from the value of the search bar
                     let newBtn = document.createElement("div") 
                     newBtn.innerHTML = `
-                    <button class="btn btn-block btn-secondary">${document.getElementById('cityName').value}</button>
+                    <button id="savedBtn" class="btn btn-block btn-secondary">${document.getElementById('cityName').value}</button>
                     `
+                    // Appends new button and clears out the input field
                     document.getElementById('searchBar').append(newBtn)
                     document.getElementById('cityName').value = ''
-                    // localStorage.setItem(document.getElementById('searchBar').value)
+
                     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=imperial&appid=775ad81aec4e8e43e36233ea18090329`)
                         .then(r => r.json())
                         .then(forecast => {
                             console.log(forecast)
+                            // The div elements for the five day forecasts. Tried to do a for loop for these, but it proved to be difficult.
                             document.getElementById('cityDay1').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
@@ -73,9 +77,6 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                                 </div>
                             </div>
                             `
-                            // let forecastArr = forecast.daily
-                            // for (let i = 0; i <= forecastArr; i++)
-                            // console.log(forecastArr)
                 })
                 .catch(e => console.log(e))
         })
@@ -83,3 +84,11 @@ document.getElementById('searchBtn').addEventListener('click', event => {
         })
     .catch(e => console.log(e))
     })
+
+// Trying to turn the new button I append into one that will populate its city's info in the container on the right, but so far no luck
+// document.getElementById('savedBtn').addEventListener('click', (event) => {
+//     event.preventDefault()
+//     document.getElementById('cityName').innerText = `
+//     ${document.getElementById('savedBtn').value}
+//     `
+// })

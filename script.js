@@ -1,3 +1,16 @@
+let cities = JSON.parse(localStorage.getItem('cities')) || []
+
+// loops through my cities array
+for (let i = 0; i < cities.length; i++) {
+    let newBtn = document.createElement("div")
+    newBtn.innerHTML = `
+        <button id="savedBtn" class="btn btn-block btn-secondary">${cities[i]}</button>
+        `
+        // Appends new button and clears out the input field
+        document.getElementById('searchBar').append(newBtn)
+        document.getElementById('cityName').value = ''
+}
+
 document.getElementById('searchBtn').addEventListener('click', event => {
     event.preventDefault()
     // This api grabs the current weather
@@ -23,6 +36,9 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                     newBtn.innerHTML = `
                     <button id="savedBtn" class="btn btn-block btn-secondary">${document.getElementById('cityName').value}</button>
                     `
+                    // Converts the city name to string for local storage
+                    cities.push(document.getElementById('cityName').value)
+                    localStorage.setItem('cities', JSON.stringify(cities))
                     // Appends new button and clears out the input field
                     document.getElementById('searchBar').append(newBtn)
                     document.getElementById('cityName').value = ''

@@ -1,3 +1,16 @@
+let cities = JSON.parse(localStorage.getItem('cities')) || []
+
+// loops through my cities array
+for (let i = 0; i < cities.length; i++) {
+    let newBtn = document.createElement("div")
+    newBtn.innerHTML = `
+        <button id="savedBtn" class="btn btn-block btn-secondary">${cities[i]}</button>
+        `
+        // Appends new button and clears out the input field
+        document.getElementById('searchBar').append(newBtn)
+        document.getElementById('cityName').value = ''
+}
+
 document.getElementById('searchBtn').addEventListener('click', event => {
     event.preventDefault()
     // This api grabs the current weather
@@ -16,13 +29,20 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                         <p class = "align-left">Temperature: ${Math.floor(weather.main.temp)}°F<p>
                         <p>Humidity: ${weather.main.humidity}%</p>
                         <p>Wind Speed: ${weather.wind.speed} MPH</p>
-                        <p>UV Index: <span class = "uv" >${uvIndex.value}</span></p>
+                        <p>UV Index: <span class = "uv" ><button id="uv" type="button" class="btn btn-success">${uvIndex.value}</button></span></p>
                      `
+                    //  Tried getting the color of the UV index to change with the number
+                     if (uvIndex.value <= 5) {
+                        document.getElementById('uv').classList.remove('btn-success')
+                     } 
                     // Creates a button from the value of the search bar
                     let newBtn = document.createElement("div") 
                     newBtn.innerHTML = `
                     <button id="savedBtn" class="btn btn-block btn-secondary">${document.getElementById('cityName').value}</button>
                     `
+                    // Converts the city name to string for local storage
+                    cities.push(document.getElementById('cityName').value)
+                    localStorage.setItem('cities', JSON.stringify(cities))
                     // Appends new button and clears out the input field
                     document.getElementById('searchBar').append(newBtn)
                     document.getElementById('cityName').value = ''

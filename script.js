@@ -29,8 +29,12 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                         <p class = "align-left">Temperature: ${Math.floor(weather.main.temp)}°F<p>
                         <p>Humidity: ${weather.main.humidity}%</p>
                         <p>Wind Speed: ${weather.wind.speed} MPH</p>
-                        <p>UV Index: <span class = "uv" >${uvIndex.value}</span></p>
+                        <p>UV Index: <span class = "uv" ><button id="uv" type="button" class="btn btn-success">${uvIndex.value}</button></span></p>
                      `
+                    //  Tried getting the color of the UV index to change with the number
+                     if (uvIndex.value <= 5) {
+                        document.getElementById('uv').classList.remove('btn-success')
+                     } 
                     // Creates a button from the value of the search bar
                     let newBtn = document.createElement("div") 
                     newBtn.innerHTML = `

@@ -16,3 +16,17 @@
 .btn-block {
     margin: 5px 0px 5px 0px;
 }
+
+/* .card-body {
+    width: 140px;
+    height: 150px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 20px;
+} */
+
+.card {
+    margin: 15px;
+    Width: 130px;
+    height: 150px;
+}

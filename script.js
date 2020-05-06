@@ -31,7 +31,8 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                             document.getElementById('cityDay1').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Temp: ${Math.floor(forecast.daily[1].temp.day)}°F</h5>
+                                <p><img src=https://openweathermap.org/img/w/${forecast.daily[1].weather[0].icon}.png></p>
+                                    <p class="card-title">Temp: ${Math.floor(forecast.daily[1].temp.day)}°F</p>
                                     <p class="card-text">Humidity: ${forecast.daily[1].humidity}%</p>
                                 </div>
                             </div>
@@ -39,7 +40,8 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                             document.getElementById('cityDay2').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Temp: ${Math.floor(forecast.daily[2].temp.day)}°F</h5>
+                                    <p><img src=https://openweathermap.org/img/w/${forecast.daily[2].weather[0].icon}.png></p>
+                                    <p class="card-title">Temp: ${Math.floor(forecast.daily[2].temp.day)}°F</p>
                                     <p class="card-text">Humidity: ${forecast.daily[2].humidity}%</p>
                                 </div>
                             </div>
@@ -47,7 +49,8 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                             document.getElementById('cityDay3').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Temp: ${Math.floor(forecast.daily[3].temp.day)}°F</h5>
+                                    <p><img src=https://openweathermap.org/img/w/${forecast.daily[3].weather[0].icon}.png></p>
+                                    <p class="card-title">Temp: ${Math.floor(forecast.daily[3].temp.day)}°F</p>
                                     <p class="card-text">Humidity: ${forecast.daily[3].humidity}%</p>
                                 </div>
                             </div>
@@ -55,7 +58,8 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                             document.getElementById('cityDay4').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Temp: ${Math.floor(forecast.daily[4].temp.day)}°F</h5>
+                                    <p><img src=https://openweathermap.org/img/w/${forecast.daily[4].weather[0].icon}.png></p>
+                                    <p class="card-title">Temp: ${Math.floor(forecast.daily[4].temp.day)}°F</p>
                                     <p class="card-text">Humidity: ${forecast.daily[4].humidity}%</p>
                                 </div>
                             </div>
@@ -63,7 +67,8 @@ document.getElementById('searchBtn').addEventListener('click', event => {
                             document.getElementById('cityDay5').innerHTML = `
                             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Temp: ${Math.floor(forecast.daily[5].temp.day)}°F</h5>
+                                    <p><img src=https://openweathermap.org/img/w/${forecast.daily[5].weather[0].icon}.png></p>
+                                    <p class="card-title">Temp: ${Math.floor(forecast.daily[5].temp.day)}°F</p>
                                     <p class="card-text">Humidity: ${forecast.daily[5].humidity}%</p>
                                 </div>
                             </div>
